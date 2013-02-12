@@ -1,0 +1,26 @@
+
+###########################################################################
+# tmux_custom - 
+# Options are always desirable
+#
+# To use add to your .tmux.conf:
+# source-file /path/to/this/file
+###########################################################################
+
+# Make C-t the escape prefix
+set-option -g prefix C-t
+
+# Keybindings
+bind-key C-t last-window
+unbind-key '"'
+bind-key '"' choose-window
+unbind-key a
+bind-key a command-prompt "rename-window '%%'"
+bind-key . command-prompt "save-buffer '%%'"
+bind-key i command-prompt "paste-buffer -b '%%'"
+
+# Options
+set-option -g history-limit 50000
+set-option -g status-left '[#S]'
+set-option -g status-left-length 15
+set-option -g status-right '%l:%M %m/%d'

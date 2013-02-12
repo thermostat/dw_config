@@ -7,6 +7,7 @@ Configuration files I find useful.
 Included tools:
 
 * [Emacs][emacs] (Ref [Emacs Wiki][])
+* [Tmux][]
 
 Upcoming:
 * bash
@@ -15,3 +16,4 @@ Upcoming:
 
 [emacs]: http://www.gnu.org/software/emacs "Emacs"
 [Emacs Wiki]: http://www.emacswiki.org "Emacs Wiki"
+[Tmux]: http://tmux.sourceforge.net
