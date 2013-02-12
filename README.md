@@ -1,12 +1,17 @@
-dw_config
-=========
+
+The dw_config project
+===========================================================================
 
 Configuration files I find useful.
 
 Included tools:
 
-* [Emacs][emacs]
+* [Emacs][emacs] (Ref [Emacs Wiki][])
+
+Upcoming:
 * bash
+* tcsh
+* IPython
 
-[emacs]: http://www.emacs.org "Emacs"
-
+[emacs]: http://www.gnu.org/software/emacs "Emacs"
+[Emacs Wiki]: http://www.emacswiki.org "Emacs Wiki"
