@@ -8,14 +8,15 @@ Included tools:
 
 * [Emacs][emacs] (Ref [Emacs Wiki][])
 * [Tmux][]
-* [IPytho Notebook][ipynb]
+* [IPython Notebook][ipynb]
+* aliases
 
 Upcoming:
 
 * bash
 * tcsh
 * IPython (repl)
-* aliases
+
 
 [emacs]: http://www.gnu.org/software/emacs "Emacs"
 [Emacs Wiki]: http://www.emacswiki.org "Emacs Wiki"
