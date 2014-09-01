@@ -11,6 +11,7 @@ Included tools:
 * [IPython Notebook][ipynb]
 * bash
 * aliases
+* [Fluxbox][flxbx] menu
 
 Upcoming:
 
@@ -29,3 +30,4 @@ initiailiztion files:
 [Emacs Wiki]: http://www.emacswiki.org "Emacs Wiki"
 [Tmux]: http://tmux.sourceforge.net
 [ipynb]: http://ipython.org/ipython-doc/stable/notebook/notebook.html
+[flxbx]: http://fluxbox.org/

@@ -10,7 +10,7 @@
 # sudo apt-get install ipython ipython-notbook mercurial python-pygments python-docutils
 # 
 # Others
-# sudo apt-get install tmux texlive fluxbox emacs ssh 
+# sudo apt-get install tmux texlive fluxbox emacs ssh emacs-goodies-el
 
 # git config --global user.name "$NAME"
 # git config --global user.email "$EMAIL"
@@ -26,7 +26,7 @@ config_loc = {
 }
 
 config_include_lines = {
-    'bash': 'source {dw_config_home}/custom_bash.sh',
+    'bash': 'source {dw_config_home}/custom_bash.sh\neval `python /home/danw/dw_config/scripts/create_defines.py`',
     'emacs': '(load-file "{dw_config_home}/dww-custom.el")',
     'tmux': 'source-file {dw_config_home}/tmux_custom',
 }
