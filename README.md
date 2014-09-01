@@ -9,13 +9,20 @@ Included tools:
 * [Emacs][emacs] (Ref [Emacs Wiki][])
 * [Tmux][]
 * [IPython Notebook][ipynb]
+* bash
 * aliases
 
 Upcoming:
 
-* bash
 * tcsh
-* IPython (repl)
+
+## Usage ##
+
+Automation is on-going, however, currently, the set_configs.py script
+will attempt to find and append to the user's bash, tmux and emacs
+initiailiztion files:
+
+    python scripts/set_configs.py
 
 
 [emacs]: http://www.gnu.org/software/emacs "Emacs"

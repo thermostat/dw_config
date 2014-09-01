@@ -43,4 +43,5 @@ export bakcyn='\e[46m'   # Cyan
 export bakwht='\e[47m'   # White
 export txtclr='\e[0m'    # Text Reset
 
-PS1="${txtcyn}[\$?]${txtgrn}:\u@\h:${txtblu}\W${txtgrn}\$${txtclr} "
+PS1="\[${txtcyn}\][\$?]\[${txtgrn}\]:\u@\h:\[${txtblu}\]\W\[${txtgrn}\]\$\[${txtclr}\] "
+#PS1="[\$?]:\u@\h:\W\$ "
