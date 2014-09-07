@@ -1,5 +1,6 @@
 ###############################################
 # Custom bash changes
+# To add, source at the end of your .bashrc
 # source /path/to/custom_bash.sh
 ###############################################
 
@@ -43,5 +44,8 @@ export bakcyn='\e[46m'   # Cyan
 export bakwht='\e[47m'   # White
 export txtclr='\e[0m'    # Text Reset
 
+EDITOR='emacs -nw'
+
+# Prompt
 PS1="\[${txtcyn}\][\$?]\[${txtgrn}\]:\u@\h:\[${txtblu}\]\W\[${txtgrn}\]\$\[${txtclr}\] "
 #PS1="[\$?]:\u@\h:\W\$ "
