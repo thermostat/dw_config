@@ -20,5 +20,6 @@ def jsonload(self, line):
 
 ip.define_magic('jsonsave', jsonsave)
 ip.define_magic('jsonload', jsonload)
+
 del jsonsave
 del jsonload
