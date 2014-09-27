@@ -24,7 +24,7 @@ will attempt to find and append to the user's bash, tmux and emacs
 initiailiztion files:
 
     python scripts/set_configs.py
-
+    python scripts/create_aliases.py
 
 [emacs]: http://www.gnu.org/software/emacs "Emacs"
 [Emacs Wiki]: http://www.emacswiki.org "Emacs Wiki"

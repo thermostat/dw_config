@@ -9,6 +9,8 @@ def add_import(name, result_lst):
         result_lst.append('  [yes {}]'.format(name))
     except ImportError, e:
         result_lst.append('  [no  {}]'.format(name))
+        return False
+    return True
 
 
 c = get_config()

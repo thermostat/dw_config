@@ -7,7 +7,8 @@
 
 # Starting package install
 # Python-based
-# sudo apt-get install ipython ipython-notbook mercurial python-pygments python-docutils
+# sudo apt-get install ipython ipython-notbook mercurial python-pygments 
+# sudo apt-get install python-docutils python-matplotlib python-numpy
 # 
 # Others
 # sudo apt-get install tmux texlive fluxbox emacs ssh emacs-goodies-el graphviz
@@ -25,6 +26,8 @@ config_loc = {
     'emacs' : ['{env[HOME]}/.emacs.d/init.el'],
     'ipython' : ['{env[HOME]}/.config/ipython/profile_danw/ipython_config.py',
                  '{env[HOME]}/.ipython/profile_danw/ipython_config.py'],
+    'ipython_magic' : ['{env[HOME]}/.config/ipython/profile_danw/startup/01dwm.py',
+                       '{env[HOME]}/.ipython/profile_danw/startup/01dwm.py'],
 }
 
 config_include_lines = {
@@ -32,6 +35,7 @@ config_include_lines = {
     'emacs': '(load-file "{dw_config_home}/dww-custom.el")',
     'tmux': 'source-file {dw_config_home}/tmux_custom',
     'ipython': "load_subconfig('/home/danw/dw_config/ipython/ipython_config.py')",
+    'ipython_magic':"execfile('{dw_config_home}/ipython/dw_magic.py')",
 }
 
 def locate_cfg_home():

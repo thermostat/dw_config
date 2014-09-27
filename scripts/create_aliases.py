@@ -1,5 +1,27 @@
 #!/usr/bin/env python
 
+"""
+# Alias generation #
+
+Invoked by:
+
+    python scripts/create_aliases.py
+
+"""
+
+
+import os, os.path
+from os.path import join
+
+def find_aliases():
+    if os.path.exists('./aliases'):
+        return './aliases'
+    if os.path.exists('../aliases'):
+        return '../aliases'
+    p = join(os.environ['HOME'], 'dw_config/aliases')
+    if os.path.exists(p):
+        return p
+
 def gen_bash_alias(alias_fname, bash_fname):
     fd = file(alias_fname, 'r')
     outfd = file(bash_fname, 'w')
@@ -18,5 +40,6 @@ def gen_bash_alias(alias_fname, bash_fname):
 
 
 if __name__ == '__main__':
-    gen_bash_alias('../aliases',
-                   '../../.bash_aliases')
+    src_alias = find_aliases()
+    tgt_alias = join(os.environ['HOME'], '.bash_aliases')
+    gen_bash_alias(src_alias, tgt_alias)
