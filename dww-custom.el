@@ -27,6 +27,8 @@
 (setq c-default-style "user"
       c-basic-offset 4)
 
+(set-terminal-coding-system 'utf-8-unix)
+
 ; This keeps the ReST mode from freaking out and
 ; making the headers illegible.
 (setq frame-background-mode 'dark)
