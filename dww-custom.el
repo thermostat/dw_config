@@ -40,7 +40,30 @@
  (insert (format-time-string "%m-%d-%Y"))
 )
 
+; Unicode shortcuts
+(setq shortcut-alist '(("smilie" . "☺")
+                       ("shrug" . "¯\\_₍ツ)_/¯")
+                       ("check" . "✓")
+                       ("ankh" . "☥")
+                       ("rarrow" . "→")
+                       ("therefore" . "∴")
+                       ("soviet" . "☭")
+                       ("skull" . "☠")
+                       ))
+
+
+(defun insert-shortcut (in)
+  "Inserts the shortcut named"
+  (interactive (list
+                (completing-read "Shortcut: "
+                                 (mapcar 'car shortcut-alist)
+                )))
+  (insert (cdr (assoc in shortcut-alist)))
+)
+
+
 ; Some useful keybindings 
+(global-set-key (kbd "C-c i") 'insert-shortcut)
 (global-set-key (kbd "C-c ;") 'insert-date)
 (global-set-key (kbd "C-c r") 'toggle-read-only)
 (global-set-key (kbd "C-x /") 'comment-region)
