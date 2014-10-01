@@ -4,8 +4,9 @@
 ; This should handle general (non-system specific) options, and
 ; it should be loaded from init.el or .emacs. Tested on emacs 24.
 ;
+; Dan Williams
 ; dan@osheim.org
-; 2013 
+; 2013-2014
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -16,8 +17,9 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
+; emacs23 doesn't seem to do well with themes
+(if (> emacs-major-version 23) (load-theme 'tango-dark) 'nil)
 ; The red comments were overpowering...
-(load-theme 'tango-dark)
 (set-face-foreground 'font-lock-comment-face "pink")
 (set-face-foreground 'font-lock-comment-delimiter-face "pink")
 
@@ -40,25 +42,52 @@
  (insert (format-time-string "%m-%d-%Y"))
 )
 
-; Unicode shortcuts
+; Unicode shortcuts Note, most of the math symbols can be gotten from
+; the TeX input method (C-\ "TeX" -- see C-h I). The emoji and
+; multi-char entries are not included there. Some are duplicated with
+; shorter names (i.e., haert vs \heartsuit)
 (setq shortcut-alist '(("smilie" . "☺")
+                       ("frown" . "☹")
                        ("shrug" . "¯\\_₍ツ)_/¯")
+                       ("disapp" . "ಠ_ಠ")
+                       ("flip" . "(╯°□°）╯︵ ┻━┻")
                        ("check" . "✓")
                        ("ankh" . "☥")
+                       ("inf" . "∞")
                        ("rarrow" . "→")
+                       ("larrow" . "←")
                        ("therefore" . "∴")
                        ("soviet" . "☭")
                        ("skull" . "☠")
+                       ("radio" . "☢")
+                       ("phone" . "☏")
+                       ("qnote" . "♩")
+                       ("enote" . "♪")
+                       ("gear" . "⚙")
+                       ("heart" . "♥")
+                       ("diamond" . "♦")
+                       ("club" . "♣")
+                       ("spade" . "♠")
+                       ("peace" . "☮")
+                       ("degree" . "º")
+                       ("keyboard" . "⌨")
+                       ("hourglass" . "⌛")
+                       ("recycle" . "♻")
+                       ("star-of-david" . "✡")
+                       ("cross" . "✝")
+                       ("coffee" . "☕")
+                       ("umbrella" . "☂")
                        ))
 
 
 (defun insert-shortcut (in)
-  "Inserts the shortcut named"
+  "Inserts the unicode shortcut named"
   (interactive (list
                 (completing-read "Shortcut: "
                                  (mapcar 'car shortcut-alist)
                 )))
-  (insert (cdr (assoc in shortcut-alist)))
+  (let ((val (cdr (assoc in shortcut-alist))))
+    (insert (if (eq nil val) "" val)))
 )
 
 
