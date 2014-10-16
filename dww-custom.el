@@ -9,6 +9,10 @@
 ; 2013-2014
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;Markdown package -
+;http://jblevins.org/projects/markdown-mode/markdown-mode.el
+;(browse-url-emacs 
+; "http://jblevins.org/projects/markdown-mode/markdown-mode.el")
 
 ; Not sure if global-font-lock-mode is necessary in
 ; this day in age, but I keep it as a remind of .emacs
