@@ -45,6 +45,13 @@ export bakwht='\e[47m'   # White
 export txtclr='\e[0m'    # Text Reset
 
 EDITOR='emacs -nw'
+PAGER=less
+
+#MacOS color prompt
+if [[ `uname` == 'Darwin' ]]; then 
+  export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+  export CLICOLOR=1
+fi
 
 # Prompt
 PS1="\[${txtcyn}\][\$?]\[${txtgrn}\]:\u@\h:\[${txtblu}\]\W\[${txtgrn}\]\$\[${txtclr}\] "
