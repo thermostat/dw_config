@@ -77,6 +77,5 @@ def append_configs(cfg_lst=append_cfgs):
     for pgm in cfg_lst:
         append_config_file(pgm)
 
-
 if __name__ == '__main__':
     append_configs()
