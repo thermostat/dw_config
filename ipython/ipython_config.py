@@ -28,7 +28,8 @@ c.TerminalInteractiveShell.editor = 'emacs'
 c.TerminalIPythonApp.exec_lines = []
 
 banner2 = ['Loading..']
-add_import('pyrento', banner2)
+if add_import('pyrento', banner2):
+    c.TerminalIPythonApp.exec_lines.append('from pyrento.datatype import Address as Addr')
 add_import('matplotlib', banner2)
 add_import('numpy', banner2)
 
