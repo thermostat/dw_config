@@ -44,6 +44,30 @@ config_include_lines = {
     'ipython_magic':"execfile('{dw_config_home}/ipython/dw_magic.py')",
 }
 
+class Command(object):
+    def __init__(self, ns):
+        self.ns = ns
+
+    def run(self, command):
+        if self.ns.verbose or self.ns.pretend:
+            print command.format(**self.ns)
+        if not self.ns.pretend:
+            os.system(command.format(**self.ns))
+
+    def append_to_file(self, filename, appendstr):
+        if self.ns.verbose or self.ns.pretend:
+            print "{} =>\n  {}".format(filename,appendstr)
+        if self.ns.pretend:
+            return
+        if os.path.exists(filename):
+            mode = 'a'
+        else:
+            mode = 'w'
+        fd = file(filename, mode)
+        fd.seek(0, 2)
+        fd.write('\n'+appendstr+'\n')
+        
+
 def locate_cfg_home():
     f = str(__file__)
     dw_cfg_home=os.path.abspath(f)
@@ -76,7 +100,7 @@ def append_config_file(program):
 
 def ipython_setup():
     os.system('ipython profile create danw')
-    os.system('''echo "execfile('/home/danw/dw_config/ipython/ipython_config.py')" > `ipython locate danw`/profile_pyrento/ipython_config.py''')
+    os.system('''echo "execfile('/home/danw/dw_config/ipython/ipython_config.py')" > `ipython locate danw`/profile_danw/ipython_config.py''')
     #append_config_file('ipython')
 
 
@@ -86,11 +110,18 @@ def append_configs(cfg_lst=append_cfgs):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Configuration scripting')
-    parser.add_argument('--all', help='do everything')
-    parser.add_argument('--verbose', help='print what operations are being performed')
-    parser.add_argument('--pretend', help="don't actually modify")
+    parser.add_argument('--all', action='store_true', help='do everything')
+    parser.add_argument('--configs', action='store_true', help='do config')
+    parser.add_argument('--ipython', action='store_true', help='do ipython setup')
+    parser.add_argument('--verbose', action='store_true', help='print what operations are being performed')
+    parser.add_argument('--pretend', action='store_true', help="don't actually modify")
     args = parser.parse_args()
-    if args.all:
+    did_something = False
+    if args.all or args.configs:
+        did_something = True
         append_configs()
-    if args.all:
+    if args.all or args.ipython:
         ipython_setup()
+        did_something = True
+    if not did_something:
+        parser.print_help()
