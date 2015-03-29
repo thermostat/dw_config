@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-################################################
+###########################################################################
 # The plan is to migrate from notes to 
 # automation
-################################################
+###########################################################################
 
 # Starting package install
 # Python-based
@@ -11,12 +11,18 @@
 # sudo apt-get install python-docutils python-matplotlib python-numpy
 # 
 # Others
-# sudo apt-get install tmux texlive fluxbox emacs ssh emacs-goodies-el graphviz
+# sudo apt-get install tmux texlive emacs emacs-goodies-el
+# sudo apt-get install ssh graphviz fluxbox
 
 # git config --global user.name "$NAME"
 # git config --global user.email "$EMAIL"
 
+
+###########################################################################
+# Std imports
+###########################################################################
 import os, os.path
+import argparse
 
 append_cfgs = ['tmux', 'bash', 'emacs']
 
@@ -79,5 +85,12 @@ def append_configs(cfg_lst=append_cfgs):
         append_config_file(pgm)
 
 if __name__ == '__main__':
-    append_configs()
-    ipython_setup()
+    parser = argparse.ArgumentParser('Configuration scripting')
+    parser.add_argument('--all', help='do everything')
+    parser.add_argument('--verbose', help='print what operations are being performed')
+    parser.add_argument('--pretend', help="don't actually modify")
+    args = parser.parse_args()
+    if args.all:
+        append_configs()
+    if args.all:
+        ipython_setup()
