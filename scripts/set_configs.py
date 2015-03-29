@@ -70,7 +70,8 @@ def append_config_file(program):
 
 def ipython_setup():
     os.system('ipython profile create danw')
-    append_config_file('ipython')
+    os.system('''echo "execfile('/home/danw/dw_config/ipython/ipython_config.py')" > `ipython locate danw`/profile_pyrento/ipython_config.py''')
+    #append_config_file('ipython')
 
 
 def append_configs(cfg_lst=append_cfgs):
@@ -79,3 +80,4 @@ def append_configs(cfg_lst=append_cfgs):
 
 if __name__ == '__main__':
     append_configs()
+    ipython_setup()

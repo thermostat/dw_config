@@ -1,8 +1,8 @@
 # Configuration file for ipython.
 
 """
-ipython profile create pyrento
-echo "execfile('/home/danw/dw_config/ipython/ipython_config.py')" > `ipython locate pyrento`/profile_pyrento/ipython_config.py
+ipython profile create danw
+echo "execfile('/home/danw/dw_config/ipython/ipython_config.py')" > `ipython locate danw`/profile_pyrento/ipython_config.py
 """
 
 import imp
