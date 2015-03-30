@@ -50,19 +50,20 @@ class Command(object):
 
     def run(self, command):
         if self.ns.verbose or self.ns.pretend:
-            print command.format(**dict(self.ns))
+            print command.format(**vars(self.ns))
         if not self.ns.pretend:
-            os.system(command.format(**dict(self.ns)))
+            os.system(command.format(**vars(self.ns)))
 
     def append_to_file(self, filename, appendstr):
         if self.ns.verbose or self.ns.pretend:
             print "{} =>\n  {}".format(filename,appendstr)
         if self.ns.pretend:
             return
-        if os.path.exists(filename):
-            mode = 'a'
-        else:
+        if not os.path.exists(filename):
+            ensure_directory(os.path.split(filename)[0])
             mode = 'w'
+        else:
+            mode = 'a'
         if self.ns.verbose:
             print "Opening {}, mode ({})".format(filename, mode)
         fd = file(filename, mode)
@@ -70,6 +71,14 @@ class Command(object):
         fd.write('\n'+appendstr+'\n')
         fd.close()
         
+
+def ensure_directory(dirname):
+    print dirname
+    last_dir = os.path.split(dirname)[0]
+    if len(last_dir) > 1 and not os.path.isdir(last_dir):
+        ensure_directory(last_dir)
+    if not os.path.isdir(dirname):
+        os.mkdir(dirname)
 
 def locate_cfg_home():
     f = str(__file__)
