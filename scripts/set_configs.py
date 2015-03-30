@@ -50,9 +50,9 @@ class Command(object):
 
     def run(self, command):
         if self.ns.verbose or self.ns.pretend:
-            print command.format(**self.ns)
+            print command.format(**dict(self.ns))
         if not self.ns.pretend:
-            os.system(command.format(**self.ns))
+            os.system(command.format(**dict(self.ns)))
 
     def append_to_file(self, filename, appendstr):
         if self.ns.verbose or self.ns.pretend:
@@ -93,7 +93,7 @@ def find_config_loc(tool):
 def append_config_file(cmd, program):
     cfg_fname = find_config_loc(program)
     appendline = format_dirs(config_include_lines[program])
-    cmd.append_to_file(cfg_fname, appendstr)
+    cmd.append_to_file(cfg_fname, appendline)
 
 def ipython_setup(cmd):
     cmd.run('ipython profile create danw')
