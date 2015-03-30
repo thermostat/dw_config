@@ -21,6 +21,9 @@ def find_aliases():
     p = join(os.environ['HOME'], 'dw_config/aliases')
     if os.path.exists(p):
         return p
+    if 'DW_CONFIG' in os.environ:
+        p = join(os.environ['DW_CONFIG'], 'aliases')
+        return p
 
 def gen_bash_alias(alias_fname, bash_fname):
     fd = file(alias_fname, 'r')

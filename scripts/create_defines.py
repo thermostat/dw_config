@@ -22,7 +22,7 @@ def create_defs():
     py_paths = []
     pyrento_dir = glob(join(home_dir, '*/pyrento'))
     if len(pyrento_dir):
-        py_paths.append(pyrento_dir[0])
+        py_paths.append(os.path.split(pyrento_dir[0])[0])
     py_paths.append(join(locate_cfg_home(),'scripts'))
     print "export PYTHONPATH=$PYTHONPATH:{}".format(":".join(py_paths))
 

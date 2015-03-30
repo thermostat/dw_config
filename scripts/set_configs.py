@@ -48,11 +48,13 @@ class Command(object):
     def __init__(self, ns):
         self.ns = ns
 
-    def run(self, command):
+    def run(self, command, **args):
+        run_vars = vars(self.ns)
+        run_vars.update(args)
         if self.ns.verbose or self.ns.pretend:
-            print command.format(**vars(self.ns))
+            print command.format(**run_vars)
         if not self.ns.pretend:
-            os.system(command.format(**vars(self.ns)))
+            os.system(command.format(**run_vars))
 
     def append_to_file(self, filename, appendstr):
         if self.ns.verbose or self.ns.pretend:
@@ -108,7 +110,12 @@ def append_config_file(cmd, program):
 
 def ipython_setup(cmd):
     cmd.run('ipython profile create danw')
-    cmd.run('''echo "execfile('/home/danw/dw_config/ipython/ipython_config.py')" > `ipython locate danw`/profile_danw/ipython_config.py''')
+    cmd.run('''echo "execfile('{dw_config_home}/ipython/ipython_config.py')" > `ipython locate danw`/profile_danw/ipython_config.py''',
+            dw_config_home=locate_cfg_home() )
+
+def alias_setup(cmd):
+    cmd.run('python {dw_config_home}/scripts/create_aliases.py',
+            dw_config_home=locate_cfg_home())
 
 
 def append_configs(cmd, cfg_lst=append_cfgs):
@@ -120,6 +127,7 @@ if __name__ == '__main__':
     parser.add_argument('--all', action='store_true', help='do everything')
     parser.add_argument('--configs', action='store_true', help='do config')
     parser.add_argument('--ipython', action='store_true', help='do ipython setup')
+    parser.add_argument('--alias', action='store_true', help='do alias setup')
     parser.add_argument('--verbose', action='store_true', help='print what operations are being performed')
     parser.add_argument('--pretend', action='store_true', help="don't actually modify")
     args = parser.parse_args()
@@ -137,5 +145,11 @@ if __name__ == '__main__':
             ipython_setup(cmd)
         except Exception, e:
             print "IPython setup failed: {}".format(str(e))
+    if args.all or args.alias:
+        try:
+            did_something = True
+            alias_setup(cmd)
+        except Exception, e:
+            print "Alias setup failed: {}".format(str(e))
     if not did_something:
         parser.print_help()
