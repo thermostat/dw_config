@@ -63,6 +63,8 @@ class Command(object):
             mode = 'a'
         else:
             mode = 'w'
+        if self.ns.verbose:
+            "Opening {}, mode ({})".format(filename, mode)
         fd = file(filename, mode)
         fd.seek(0, 2)
         fd.write('\n'+appendstr+'\n')
