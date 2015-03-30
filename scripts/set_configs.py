@@ -66,6 +66,7 @@ class Command(object):
         fd = file(filename, mode)
         fd.seek(0, 2)
         fd.write('\n'+appendstr+'\n')
+        fd.close()
         
 
 def locate_cfg_home():
@@ -89,24 +90,19 @@ def find_config_loc(tool):
     # If none exist, give the first
     return cl[0].format(env=os.environ)
 
-def append_config_file(program):
+def append_config_file(cmd, program):
     cfg_fname = find_config_loc(program)
     appendline = format_dirs(config_include_lines[program])
-    print "{} =>\n  {}".format(cfg_fname,appendline)
-    fd = file(cfg_fname, 'a')
-    fd.seek(0, 2)
-    fd.write('\n'+appendline+'\n')
-    fd.close()
+    cmd.append_to_file(cfg_fname, appendstr)
 
-def ipython_setup():
-    os.system('ipython profile create danw')
-    os.system('''echo "execfile('/home/danw/dw_config/ipython/ipython_config.py')" > `ipython locate danw`/profile_danw/ipython_config.py''')
-    #append_config_file('ipython')
+def ipython_setup(cmd):
+    cmd.run('ipython profile create danw')
+    cmd.run('''echo "execfile('/home/danw/dw_config/ipython/ipython_config.py')" > `ipython locate danw`/profile_danw/ipython_config.py''')
 
 
-def append_configs(cfg_lst=append_cfgs):
+def append_configs(cmd, cfg_lst=append_cfgs):
     for pgm in cfg_lst:
-        append_config_file(pgm)
+        append_config_file(cmd, pgm)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Configuration scripting')
@@ -117,11 +113,18 @@ if __name__ == '__main__':
     parser.add_argument('--pretend', action='store_true', help="don't actually modify")
     args = parser.parse_args()
     did_something = False
+    cmd = Command(args)
     if args.all or args.configs:
-        did_something = True
-        append_configs()
+        try:
+            did_something = True
+            append_configs(cmd)
+        except Exception, e:
+            print "Config setup failed: {}".format(str(e))
     if args.all or args.ipython:
-        ipython_setup()
-        did_something = True
+        try:
+            did_something = True
+            ipython_setup(cmd)
+        except Exception, e:
+            print "IPython setup failed: {}".format(str(e))
     if not did_something:
         parser.print_help()
