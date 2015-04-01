@@ -24,12 +24,13 @@
 import os, os.path
 import argparse
 
-append_cfgs = ['tmux', 'bash', 'emacs']
+append_cfgs = ['tmux', 'bash', 'emacs', 'csh']
 
 config_loc = {
     'tmux': ['{env[HOME]}/.tmux.conf'],
     'bash': ['{env[HOME]}/.bashrc'],
     'emacs' : ['{env[HOME]}/.emacs.d/init.el'],
+    'csh' : ['{env[HOME]}/.cshrc'],
     'ipython' : ['{env[HOME]}/.config/ipython/profile_danw/ipython_config.py',
                  '{env[HOME]}/.ipython/profile_danw/ipython_config.py'],
     'ipython_magic' : ['{env[HOME]}/.config/ipython/profile_danw/startup/01dwm.py',
@@ -42,6 +43,7 @@ config_include_lines = {
     'tmux': 'source-file {dw_config_home}/tmux_custom',
     'ipython': "load_subconfig('/home/danw/dw_config/ipython/ipython_config.py')",
     'ipython_magic':"execfile('{dw_config_home}/ipython/dw_magic.py')",
+    'cshrc' : "source {dw_config_home}/custom_tcsh.sh",
 }
 
 class Command(object):

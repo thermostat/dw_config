@@ -15,9 +15,6 @@ Included tools:
 * bash
 * aliases
 * [Fluxbox][flxbx] menu
-
-Upcoming:
-
 * tcsh
 
 ## Usage ##
