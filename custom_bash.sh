@@ -4,10 +4,15 @@
 # source /path/to/custom_bash.sh
 ###############################################
 
-
-
+# If we have an alias file, use it
 if [ -x $HOME/.bash_aliases ]; then
     source $HOME/.bash_aliases
+fi
+
+if [ -z ${DW_CONFIG:+x} ]; then
+    # TODO
+    # eval defines?
+    do_dw_conf=1
 fi
 
 export txtblk='\e[0;30m' # Black - Regular
@@ -44,6 +49,9 @@ export bakcyn='\e[46m'   # Cyan
 export bakwht='\e[47m'   # White
 export txtclr='\e[0m'    # Text Reset
 
+###########################################################################
+# Defines - should one day auto-generate/update
+###########################################################################
 EDITOR='emacs -nw'
 PAGER=less
 
@@ -53,6 +61,30 @@ if [[ `uname` == 'Darwin' ]]; then
   export CLICOLOR=1
 fi
 
+###########################################################################
 # Prompt
-PS1="\[${txtcyn}\][\$?]\[${txtgrn}\]:\u@\h:\[${txtblu}\]\W\[${txtgrn}\]\$\[${txtclr}\] "
+###########################################################################
+SHORT_PROMPT="\[${txtcyn}\][\$?]\[${txtgrn}\]:\u@\h:\[${txtblu}\]\W\[${txtgrn}\]\$\[${txtclr}\] "
+LONG_PROMPT="${txtpur}###########################################################################${txtclr}\nUser=${txtblu}\u${txtclr} Host=${txtblu}\h${txtclr}\nLast Cmd [${txtpur}\t${txtclr}] Exited $? \nIn ${txtcyn}\w${txtclr} History ${txtcyn}\!${txtclr}\n${txtpur}###########################################################################${txtclr}\n$ "
+PS1=${SHORT_PROMPT}
 #PS1="[\$?]:\u@\h:\W\$ "
+
+function short_prompt
+{
+    export PS1=${SHORT_PROMPT}
+}
+
+function long_prompt
+{
+    export PS1=${LONG_PROMPT}
+}
+
+function resource
+{
+    source ~/.bashrc
+}    
+
+###########################################################################
+
+alias lp=long_prompt
+alias sp=short_prompt
