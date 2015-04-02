@@ -15,7 +15,7 @@ if (-e ~/.aliases) then
 endif
 
 
-# DW prompt
+# DW prompt - similar to bash short prompt
 set prompt = "%{\033[36m%}[%?]%{\033[32m%}:%n@%m:%{\033[34m%}%c1%{\033[32m%}%%%{\033[0m%} "
 
 ### delete words:

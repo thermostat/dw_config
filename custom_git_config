@@ -9,4 +9,6 @@
   default = simple
 
 [alias]
-  out = log --pretty=oneline --abbrev-commit --graph @{u}..  
+  out = log --pretty=format:\"%C(auto)%h %aE %C(auto)%ai %s\" --graph @{u}..  
+  stat = status --short
+  shlog = log  --pretty=format:\"%C(auto)%h %aE %C(auto)%ai %s\"
