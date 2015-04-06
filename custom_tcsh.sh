@@ -9,6 +9,8 @@ setenv EDITOR 'emacs -nw'
 # default file protection
 umask 002
 
+# insure reasonable autocompletion
+set autolist ambiguous
 
 if (-e ~/.aliases) then
    source ~/.aliases 
