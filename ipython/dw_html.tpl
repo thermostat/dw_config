@@ -50,8 +50,6 @@ In&nbsp;[&nbsp;]:
 <div class="inner_cell">
     <div class="input_area">
 {{ cell.source | highlight_code(metadata=cell.metadata) }}
-<br>
-{{ cell.metadata }}
 </div>
 </div>
 {%- endif -%}
@@ -63,7 +61,6 @@ In&nbsp;[&nbsp;]:
     <div class="prompt output_prompt">
 {%- if cell.execution_count is defined -%}
     Out[{{ cell.execution_count|replace(None, "&nbsp;") }}]:
-    <br>{{cell.metadata}}
 {%- else -%}
     Out[&nbsp;]:
 {%- endif -%}
