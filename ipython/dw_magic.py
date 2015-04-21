@@ -4,7 +4,7 @@
 #
 ###########################################################################
 
-import IPython, json, os.path
+import IPython, json, os.path, urllib2
 
 ip = IPython.get_ipython()
 
@@ -35,9 +35,23 @@ def html_obj(self, line):
     html = IPython.display.HTML(obj.html())
     return html
 
+def twitter(self, idn):
+    url = 'https://api.twitter.com/1/statuses/oembed.json?id={}'.format(idn)
+    result = urllib2.urlopen(url)
+    html = None
+    if result.getcode() == 200:
+        data = result.fp.read()
+        js = json.loads(data)
+        html = IPython.display.HTML(js['html'])
+    else:
+        html_x = "<b>No twitter message found</b>"
+        html = IPython.display.HTML(html_x)
+    return html
+
 ip.define_magic('jsonsave', jsonsave)
 ip.define_magic('jsonload', jsonload)
 ip.define_magic('html_obj', html_obj)
+ip.define_magic('twitter', twitter)
 
 del jsonsave
 del jsonload

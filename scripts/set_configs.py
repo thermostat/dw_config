@@ -13,6 +13,7 @@
 # Others
 # sudo apt-get install tmux texlive emacs emacs-goodies-el
 # sudo apt-get install ssh graphviz fluxbox
+# sudo apt-get install g++ libfreetype6-dev libxft-dev
 
 # git config --global user.name "$NAME"
 # git config --global user.email "$EMAIL"
@@ -123,6 +124,11 @@ def alias_setup(cmd):
 def append_configs(cmd, cfg_lst=append_cfgs):
     for pgm in cfg_lst:
         append_config_file(cmd, pgm)
+
+def apt_get_python(cmd):
+    cmd.run('sudo apt-get install ipython ipython-notbook mercurial python-pygments ')
+    cmd.run('sudo apt-get install python-docutils python-matplotlib python-numpy')
+    
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Configuration scripting')
