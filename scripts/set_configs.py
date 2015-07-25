@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 
 ###########################################################################
-# The plan is to migrate from notes to 
+# The plan is to migrate from notes to
 # automation
 ###########################################################################
 
 # Starting package install
 # Python-based
-# sudo apt-get install ipython ipython-notbook mercurial python-pygments 
+# sudo apt-get install ipython ipython-notbook mercurial python-pygments
 # sudo apt-get install python-docutils python-matplotlib python-numpy
-# 
+#
 # Others
 # sudo apt-get install tmux texlive emacs emacs-goodies-el
 # sudo apt-get install ssh graphviz fluxbox
@@ -48,6 +48,9 @@ config_include_lines = {
 }
 
 class Command(object):
+    """
+    
+    """
     def __init__(self, ns):
         self.ns = ns
 
@@ -75,7 +78,7 @@ class Command(object):
         fd.seek(0, 2)
         fd.write('\n'+appendstr+'\n')
         fd.close()
-        
+
 
 def ensure_directory(dirname):
     print dirname
@@ -94,7 +97,7 @@ def locate_cfg_home():
 
 
 def format_dirs(strn):
-    return strn.format(env=os.environ, 
+    return strn.format(env=os.environ,
                        dw_config_home=locate_cfg_home())
 
 def find_config_loc(tool):
@@ -128,7 +131,7 @@ def append_configs(cmd, cfg_lst=append_cfgs):
 def apt_get_python(cmd):
     cmd.run('sudo apt-get install ipython ipython-notbook mercurial python-pygments ')
     cmd.run('sudo apt-get install python-docutils python-matplotlib python-numpy')
-    
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Configuration scripting')

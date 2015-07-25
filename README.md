@@ -12,7 +12,7 @@ Included tools:
 * [Emacs][emacs] (Ref [Emacs Wiki][])
 * [Tmux][]
 * [IPython Notebook][ipynb]
-* bash
+* [bash][]
 * aliases
 * [Fluxbox][flxbx] menu
 * tcsh
@@ -34,3 +34,4 @@ You can preview changes via the `pretend` option.
 [Tmux]: http://tmux.sourceforge.net
 [ipynb]: http://ipython.org/ipython-doc/stable/notebook/notebook.html
 [flxbx]: http://fluxbox.org/
+[bash]: https://www.gnu.org/software/bash/
