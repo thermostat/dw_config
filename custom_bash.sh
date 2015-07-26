@@ -9,8 +9,16 @@ if [ -x $HOME/.bash_aliases ]; then
     source $HOME/.bash_aliases
 fi
 
+# Remedial bash: -z means "string is null"
+# :+x If DW_CONFIG is defined, replace with "x"
 if [ -z ${DW_CONFIG:+x} ]; then
-    # TODO
+    # Take a few educated guesses
+    if [ -d $HOME/dw_config ]; then
+      export DW_CONFIG=$HOME/dw_config
+    elif [ -d $HOME/code/dw_config ]; then
+      export DW_CONFIG=$HOME/code/dw_config
+    fi
+
     # eval defines?
     do_dw_conf=1
 fi
@@ -56,7 +64,7 @@ EDITOR='emacs -nw'
 PAGER=less
 
 #MacOS color prompt
-if [[ `uname` == 'Darwin' ]]; then 
+if [[ `uname` == 'Darwin' ]]; then
   export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
   export CLICOLOR=1
 fi
@@ -82,7 +90,7 @@ function long_prompt
 function resource
 {
     source ~/.bashrc
-}    
+}
 
 ###########################################################################
 
