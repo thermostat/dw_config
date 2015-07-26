@@ -18,9 +18,11 @@ if [ -z ${DW_CONFIG:+x} ]; then
     elif [ -d $HOME/code/dw_config ]; then
       export DW_CONFIG=$HOME/code/dw_config
     fi
+fi
 
-    # eval defines?
-    do_dw_conf=1
+if [ -d $HOME/code/pyrento ]; then
+  export PYRENTO_HOME=$HOME/code/pyrento
+  export PYTHONPATH=$PYTHONPATH:$HOME/code
 fi
 
 export txtblk='\e[0;30m' # Black - Regular

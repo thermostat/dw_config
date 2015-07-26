@@ -49,7 +49,7 @@ config_include_lines = {
 
 class Command(object):
     """
-    
+
     """
     def __init__(self, ns):
         self.ns = ns
