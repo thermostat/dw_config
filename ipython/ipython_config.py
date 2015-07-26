@@ -2,7 +2,8 @@
 
 """
 ipython profile create danw
-echo "execfile('/home/danw/dw_config/ipython/ipython_config.py')" > `ipython locate danw`/profile_pyrento/ipython_config.py
+echo "execfile('/home/danw/dw_config/ipython/ipython_config.py')" > \
+  `ipython locate danw`/profile_pyrento/ipython_config.py
 """
 
 import imp
@@ -18,10 +19,13 @@ def add_import(name, result_lst):
     return True
 
 
+# Note, this executes in a different environment from
+# the IPython notebook env. You must use the "exec_lines" array
+# below to add code that will be executed in the IPython env
 c = get_config()
 
 c.TerminalInteractiveShell.color_info = True
-c.TerminalInteractiveShell.banner1 = "IPython ..." 
+c.TerminalInteractiveShell.banner1 = "IPython ..."
 c.TerminalInteractiveShell.confirm_exit = False
 c.InteractiveShellApp.exec_files = []
 c.TerminalInteractiveShell.editor = 'emacs'
@@ -29,7 +33,8 @@ c.TerminalIPythonApp.exec_lines = []
 
 banner2 = ['Loading..']
 if add_import('pyrento', banner2):
-    c.TerminalIPythonApp.exec_lines.append('from pyrento.datatype import Address as Addr')
+    el = c.TerminalIPythonApp.exec_lines
+    el.append('from pyrento.datatype import Address as Addr')
 add_import('matplotlib', banner2)
 add_import('numpy', banner2)
 
