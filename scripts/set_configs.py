@@ -14,10 +14,11 @@
 # sudo apt-get install tmux texlive emacs emacs-goodies-el
 # sudo apt-get install ssh graphviz fluxbox
 # sudo apt-get install g++ libfreetype6-dev libxft-dev
-
+#
 # git config --global user.name "$NAME"
 # git config --global user.email "$EMAIL"
-
+#
+# sudo pip install tmuxp
 
 ###########################################################################
 # Std imports
