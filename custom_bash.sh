@@ -89,6 +89,10 @@ function long_prompt
     export PS1=${LONG_PROMPT}
 }
 
+function termname() {
+    echo -ne "\033]0;"$1"\007"
+}
+
 function resource
 {
     source ~/.bashrc
