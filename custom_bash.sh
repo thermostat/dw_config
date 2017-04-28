@@ -98,6 +98,11 @@ function resource
     source ~/.bashrc
 }
 
+function path
+{
+    eval `python3 $DW_CONFIG/scripts/path_tool.py $1 $2`
+}
+
 ###########################################################################
 
 alias lp=long_prompt
