@@ -1,6 +1,15 @@
 #!/usr/bin/python3
 #!/usr/local/bin/python3
 
+"""
+Path tool - A quick helper for bash.
+
+To use, add the following to your bash startup sequence:
+
+function path { eval `python3 $DW_CONFIG/scripts/path_tool.py $1 $2` ; }
+
+"""
+
 import os, os.path
 import pprint
 
@@ -27,8 +36,9 @@ class Path(object):
 
 if __name__ == '__main__':
     import argparse
-    p = argparse.ArgumentParser()
-    p.add_argument('action', action='store', nargs='?', default='list')
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('action', action='store', nargs='?', default='list',
+                   help='one of "push", "pop", or "list"')
     p.add_argument('p1', nargs='*', default=[])
     args = p.parse_args()
     if args.action == 'push':
@@ -40,6 +50,8 @@ if __name__ == '__main__':
         pathobj.pop()
         print(pathobj.export())
     if args.action == 'list':
+        # Note, we're meant to be eval'd (for exports), so
+        # we printf here.
         print('printf {}\\\\n'.format('\\\\n'.join(Path().path_list)))
 
     
