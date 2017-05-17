@@ -4,3 +4,5 @@ kj = kill -9 %1
 la = ls -l --si
 ipy = ipython --profile=danw
 ipyn = ipython notebook --profile=danw
+tml = tmux list-s
+tma = tmux att -t

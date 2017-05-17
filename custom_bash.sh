@@ -4,10 +4,6 @@
 # source /path/to/custom_bash.sh
 ###############################################
 
-# If we have an alias file, use it
-if [ -x $HOME/.bash_aliases ]; then
-    source $HOME/.bash_aliases
-fi
 
 # Remedial bash: -z means "string is null"
 # :+x If DW_CONFIG is defined, replace with "x"
@@ -20,10 +16,20 @@ if [ -z ${DW_CONFIG:+x} ]; then
     fi
 fi
 
+if [ -r $DW_CONFIG/scripts/create_alias.py ]; then
+  python $DW_CONFIG/scripts/create_alias.py
+fi
+
 if [ -d $HOME/code/pyrento ]; then
   export PYRENTO_HOME=$HOME/code/pyrento
   export PYTHONPATH=$PYTHONPATH:$HOME/code
 fi
+
+# If we have an alias file, use it
+if [ -x $HOME/.bash_aliases ]; then
+    source $HOME/.bash_aliases
+fi
+
 
 export txtblk='\e[0;30m' # Black - Regular
 export txtred='\e[0;31m' # Red
