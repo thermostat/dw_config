@@ -109,6 +109,11 @@ function path
     eval `python3 $DW_CONFIG/scripts/path_tool.py $1 $2`
 }
 
+function preview_url()
+{
+    curl -s -D - $1 | grep -i location: | sed -e 's/location: //Ig';
+}
+
 ###########################################################################
 
 alias lp=long_prompt
