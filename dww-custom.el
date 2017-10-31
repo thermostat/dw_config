@@ -27,6 +27,10 @@
 (set-face-foreground 'font-lock-comment-face "pink")
 (set-face-foreground 'font-lock-comment-delimiter-face "pink")
 
+; Make cuda (.cu) files register as C++
+(add-to-list 'auto-mode-alist '("\\.cu\\'" . c++-mode))
+ 
+
 ; I think this is the most reasonable C tabstop 
 ; for my uses.
 (setq-default indent-tabs-mode nil)
