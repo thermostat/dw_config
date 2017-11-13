@@ -52,6 +52,6 @@ if __name__ == '__main__':
     if args.action == 'list':
         # Note, we're meant to be eval'd (for exports), so
         # we printf here.
-        print('printf {}\\\\n'.format('\\\\n'.join(Path().path_list)))
+        print('printf "{}\\\\n"'.format('\\\\n'.join(Path().path_list)))
 
     
