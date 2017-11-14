@@ -14,6 +14,13 @@
 ;(browse-url-emacs 
 ; "http://jblevins.org/projects/markdown-mode/markdown-mode.el")
 
+ (ignore-errors
+   (let ((md-file "~/.emacs.d/markdown-mode.el"))
+     (if (not (file-exists-p md-file))
+         (url-copy-file "http://pyrento.net/misc/markdown-mode.el" md-file))
+  (load-file md-file)
+  ))
+
 ; Not sure if global-font-lock-mode is necessary in
 ; this day in age, but I keep it as a remind of .emacs
 ; past.
