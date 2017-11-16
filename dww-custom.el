@@ -113,3 +113,8 @@
 (global-set-key (kbd "C-x /") 'comment-region)
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/save-files")))
+
+; Ignore "news," and just go to the file-backed scratch buffer
+(setq inhibit-startup-screen t)
+(if (file-exists-p "~/.scratch")
+    (find-file "~/.scratch"))
