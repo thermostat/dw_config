@@ -24,3 +24,6 @@ set-option -g history-limit 50000
 set-option -g status-left '[#S]'
 set-option -g status-left-length 15
 set-option -g status-right '%l:%M %m/%d'
+
+# Window options
+set-window-option -g allow-rename off
