@@ -6,3 +6,4 @@ ipy = ipython --profile=danw
 ipyn = ipython notebook --profile=danw
 tml = tmux list-s
 tma = tmux att -t
+tmpwd = tmux set-buffer `pwd`

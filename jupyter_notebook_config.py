@@ -7,5 +7,9 @@ if os.path.exists('/home/danw/.jupyter_token'):
 else:
     c.NotebookApp.token = '<generated>'
 
+if os.path.exists('/home/danw/notes'):
+    c.NotebookApp.notebook_dir = '/home/danw/notes'
+    
+    
 c.NotebookApp.ip = '0.0.0.0'
 c.NotebookApp.open_browser = False

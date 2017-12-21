@@ -16,8 +16,8 @@ if [ -z ${DW_CONFIG:+x} ]; then
     fi
 fi
 
-if [ -r $DW_CONFIG/scripts/create_alias.py ]; then
-  python $DW_CONFIG/scripts/create_alias.py
+if [ -r $DW_CONFIG/scripts/create_aliases.py ]; then
+  python $DW_CONFIG/scripts/create_aliases.py
 fi
 
 if [ -d $HOME/code/pyrento ]; then
