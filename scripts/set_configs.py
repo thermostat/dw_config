@@ -40,7 +40,7 @@ config_loc = {
 }
 
 config_include_lines = {
-    'bash': 'source {dw_config_home}/custom_bash.sh\neval `python /home/danw/dw_config/scripts/create_defines.py`',
+    'bash': 'source {dw_config_home}/custom_bash.sh\neval `${PYTHON2} /home/danw/dw_config/scripts/create_defines.py`',
     'emacs': '(load-file "{dw_config_home}/dww-custom.el")',
     'tmux': 'source-file {dw_config_home}/tmux_custom',
     'ipython': "load_subconfig('/home/danw/dw_config/ipython/ipython_config.py')",

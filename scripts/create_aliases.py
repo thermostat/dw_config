@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 #!/usr/bin/env python
 
 """
@@ -26,8 +27,8 @@ def find_aliases():
         return p
 
 def gen_bash_alias(alias_fname, bash_fname):
-    fd = file(alias_fname, 'r')
-    outfd = file(bash_fname, 'w')
+    fd = open(alias_fname, 'r')
+    outfd = open(bash_fname, 'w')
     for line in fd:
         if line.strip().startswith('#'):
             outfd.write(line+"\n")
