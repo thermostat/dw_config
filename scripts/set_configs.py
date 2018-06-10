@@ -140,7 +140,8 @@ if __name__ == '__main__':
     parser.add_argument('--configs', action='store_true', help='do config')
     parser.add_argument('--ipython', action='store_true', help='do ipython setup')
     parser.add_argument('--alias', action='store_true', help='do alias setup')
-    parser.add_argument('--verbose', action='store_true', help='print what operations are being performed')
+    parser.add_argument('--verbose', action='store_true',
+                        help='print what operations are being performed')
     parser.add_argument('--pretend', action='store_true', help="don't actually modify")
     args = parser.parse_args()
     did_something = False
@@ -151,12 +152,12 @@ if __name__ == '__main__':
             append_configs(cmd)
         except Exception, e:
             print "Config setup failed: {}".format(str(e))
-    if args.all or args.ipython:
-        try:
-            did_something = True
-            ipython_setup(cmd)
-        except Exception, e:
-            print "IPython setup failed: {}".format(str(e))
+    # if args.all or args.ipython:
+    #     try:
+    #         did_something = True
+    #         ipython_setup(cmd)
+    #     except Exception, e:
+    #         print "IPython setup failed: {}".format(str(e))
     if args.all or args.alias:
         try:
             did_something = True
