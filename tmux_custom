@@ -18,6 +18,7 @@ unbind-key a
 bind-key a command-prompt "rename-window '%%'"
 bind-key . command-prompt "save-buffer '%%'"
 bind-key i command-prompt "paste-buffer -b '%%'"
+bind-key / choose-session
 
 # Options
 set-option -g history-limit 50000
