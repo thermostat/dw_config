@@ -40,7 +40,7 @@ config_loc = {
 }
 
 config_include_lines = {
-    'bash': 'source {dw_config_home}/custom_bash.sh\neval `python /home/danw/dw_config/scripts/create_defines.py`',
+    'bash': 'source {dw_config_home}/custom_bash.sh\neval `${PYTHON2} /home/danw/dw_config/scripts/create_defines.py`',
     'emacs': '(load-file "{dw_config_home}/dww-custom.el")',
     'tmux': 'source-file {dw_config_home}/tmux_custom',
     'ipython': "load_subconfig('/home/danw/dw_config/ipython/ipython_config.py')",
@@ -140,7 +140,8 @@ if __name__ == '__main__':
     parser.add_argument('--configs', action='store_true', help='do config')
     parser.add_argument('--ipython', action='store_true', help='do ipython setup')
     parser.add_argument('--alias', action='store_true', help='do alias setup')
-    parser.add_argument('--verbose', action='store_true', help='print what operations are being performed')
+    parser.add_argument('--verbose', action='store_true',
+                        help='print what operations are being performed')
     parser.add_argument('--pretend', action='store_true', help="don't actually modify")
     args = parser.parse_args()
     did_something = False
@@ -151,12 +152,12 @@ if __name__ == '__main__':
             append_configs(cmd)
         except Exception, e:
             print "Config setup failed: {}".format(str(e))
-    if args.all or args.ipython:
-        try:
-            did_something = True
-            ipython_setup(cmd)
-        except Exception, e:
-            print "IPython setup failed: {}".format(str(e))
+    # if args.all or args.ipython:
+    #     try:
+    #         did_something = True
+    #         ipython_setup(cmd)
+    #     except Exception, e:
+    #         print "IPython setup failed: {}".format(str(e))
     if args.all or args.alias:
         try:
             did_something = True

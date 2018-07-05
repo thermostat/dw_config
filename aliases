@@ -7,3 +7,4 @@ ipyn = ipython notebook --profile=danw
 tml = tmux list-s
 tma = tmux att -t
 tmpwd = tmux set-buffer `pwd`
+static_web = python2 -m SimpleHTTPServer 9999

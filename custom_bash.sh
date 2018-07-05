@@ -4,6 +4,13 @@
 # source /path/to/custom_bash.sh
 ###############################################
 
+# Fix python versions
+if which python2 > /dev/null; then
+    export PYTHON2=python2
+else
+    export PYTHON2=python
+fi
+
 
 # Remedial bash: -z means "string is null"
 # :+x If DW_CONFIG is defined, replace with "x"
@@ -17,7 +24,7 @@ if [ -z ${DW_CONFIG:+x} ]; then
 fi
 
 if [ -r $DW_CONFIG/scripts/create_aliases.py ]; then
-  python $DW_CONFIG/scripts/create_aliases.py
+  $PYTHON2 $DW_CONFIG/scripts/create_aliases.py
 fi
 
 if [ -d $HOME/code/pyrento ]; then
