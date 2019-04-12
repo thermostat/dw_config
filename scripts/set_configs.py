@@ -26,13 +26,14 @@
 import os, os.path
 import argparse
 
-append_cfgs = ['tmux', 'bash', 'emacs', 'csh']
+#append_cfgs = ['tmux', 'bash', 'emacs', 'csh']
+append_cfgs = ['tmux', 'bash', 'emacs']
 
 config_loc = {
     'tmux': ['{env[HOME]}/.tmux.conf'],
     'bash': ['{env[HOME]}/.bashrc'],
     'emacs' : ['{env[HOME]}/.emacs.d/init.el'],
-    'csh' : ['{env[HOME]}/.cshrc'],
+    #'csh' : ['{env[HOME]}/.cshrc'],
     'ipython' : ['{env[HOME]}/.config/ipython/profile_danw/ipython_config.py',
                  '{env[HOME]}/.ipython/profile_danw/ipython_config.py'],
     'ipython_magic' : ['{env[HOME]}/.config/ipython/profile_danw/startup/01dwm.py',
@@ -40,7 +41,7 @@ config_loc = {
 }
 
 config_include_lines = {
-    'bash': 'source {dw_config_home}/custom_bash.sh\neval `${PYTHON2} /home/danw/dw_config/scripts/create_defines.py`',
+    'bash': 'source {dw_config_home}/custom_bash.sh\neval `${{PYTHON2}} /home/danw/dw_config/scripts/create_defines.py`',
     'emacs': '(load-file "{dw_config_home}/dww-custom.el")',
     'tmux': 'source-file {dw_config_home}/tmux_custom',
     'ipython': "load_subconfig('/home/danw/dw_config/ipython/ipython_config.py')",
