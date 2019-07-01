@@ -5,8 +5,8 @@
 ###############################################
 
 # Fix python versions
-if which python2 > /dev/null; then
-    export PYTHON2=python2
+if which python2.7 > /dev/null; then
+    export PYTHON2=python2.7
 else
     export PYTHON2=python
 fi
