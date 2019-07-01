@@ -12,5 +12,5 @@
 
 [alias]
   out = log --pretty=format:\"%C(auto)%h %aE %C(auto)%ai %s\" --graph @{u}..  
-  stat = status --short
+  stat = !git branch | grep '^*' | colrm | tr -d '*' && git status --short
   shlog = log  --pretty=format:\"%C(auto)%h %aE %C(auto)%ai %s\"
