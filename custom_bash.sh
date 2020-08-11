@@ -121,6 +121,11 @@ function preview_url()
     curl -s -D - $1 | grep -i location: | sed -e 's/location: //Ig';
 }
 
+
+function tmout {
+    tmux split-window -b -p 80 "$* | less";
+}
+
 ###########################################################################
 
 alias lp=long_prompt
