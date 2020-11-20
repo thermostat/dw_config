@@ -1,0 +1,10 @@
+# Aliases
+
+alias kj='kill -9 %1'
+alias la='ls -l --si'
+alias ipy='ipython --profile=danw'
+alias ipyn='ipython notebook --profile=danw'
+alias tml='tmux list-s'
+alias tma='tmux att -t'
+alias tmpwd='tmux set-buffer `pwd`'
+alias static_web='python2 -m SimpleHTTPServer 9999'
