@@ -1,6 +1,0 @@
-
-[begin] (Fluxbox)
-        [exec] (Terminal) {/usr/bin/gnome-terminal}
-        [exec] (Chromium) {/usr/bin/chromium-browser}
-        [exit] (Quit Fluxbox)
-[end]
