@@ -30,6 +30,7 @@
 
 ; emacs23 doesn't seem to do well with themes
 (if (> emacs-major-version 23) (load-theme 'tango-dark) 'nil)
+;(load-theme 'obsidian)
 ; The red comments were overpowering...
 (set-face-foreground 'font-lock-comment-face "pink")
 (set-face-foreground 'font-lock-comment-delimiter-face "pink")
