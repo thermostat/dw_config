@@ -17,7 +17,7 @@
  (ignore-errors
    (let ((md-file "~/.emacs.d/markdown-mode.el"))
      (if (not (file-exists-p md-file))
-         (url-copy-file "http://pyrento.net/misc/markdown-mode.el" md-file))
+         (url-copy-file "https://raw.githubusercontent.com/jrblevin/markdown-mode/master/markdown-mode.el" md-file))
   (load-file md-file)
   ))
 
