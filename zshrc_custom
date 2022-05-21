@@ -76,6 +76,9 @@ plugins=(git tmux docker)
 
 source $ZSH/oh-my-zsh.sh
 
+
+EDITOR='emacs -nw'
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
