@@ -16,3 +16,4 @@
   shlog = log  --pretty=format:\"%C(auto)%h %aE %C(auto)%ai %s\"
   branch-name = "!git rev-parse --abbrev-ref HEAD"
   push-new = "!git push --set-upstream origin $(git branch-name)"
+  pushup = push-new
