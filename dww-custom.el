@@ -119,3 +119,8 @@
 (setq inhibit-startup-screen t)
 (if (file-exists-p "~/.scratch")
     (find-file "~/.scratch"))
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+;(require 'magit)
