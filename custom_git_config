@@ -17,3 +17,4 @@
   branch-name = "!git rev-parse --abbrev-ref HEAD"
   push-new = "!git push --set-upstream origin $(git branch-name)"
   pushup = push-new
+  br = branch --sort=committerdate -l --format \"%(align:width=30)%(refname:short)%(end) %(committerdate:relative)\"
