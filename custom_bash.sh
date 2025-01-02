@@ -68,4 +68,10 @@ function tmout {
 alias lp=long_prompt
 alias sp=short_prompt
 
+
+if ! [[ -z "$TMUX_TOOLS_ENABLE" ]] ; then
+    source ${DW_CONFIG}/tmux_tools.sh
+    tmux_history_load
+fi
+
 source ${DW_CONFIG}/bash_aliases

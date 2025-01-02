@@ -17,4 +17,7 @@
   branch-name = "!git rev-parse --abbrev-ref HEAD"
   push-new = "!git push --set-upstream origin $(git branch-name)"
   pushup = push-new
-  br = branch --sort=committerdate -l --format \"%(align:width=30)%(refname:short)%(end) %(committerdate:relative)\"
+  brl = branch --sort=committerdate -l --format \"%(align:width=30)%(refname:short)%(end) %(committerdate:relative)\"
+  br = ! git branch --sort=committerdate -l --format \"%(align:width=30)%(refname:short)%(end) %(committerdate:relative)\" | grep -v attic
+  attic = !f() "{ git branch -m \"$1\" \"attic/$1\"; }; f"
+  
