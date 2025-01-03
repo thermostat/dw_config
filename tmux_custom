@@ -4,7 +4,7 @@
 # Options are always desirable
 #
 # To use add to your .tmux.conf:
-# source-file /path/to/this/file
+# source-file {{ PYRENTO_HOME }}/tmux_custom
 ###########################################################################
 
 # Make C-t the escape prefix

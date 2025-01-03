@@ -1,6 +1,7 @@
 
-The dw_config project
-===========================================================================
+# The dw_config project
+
+![Banner - computer and cat](compcat_banner.jpg)
 
 Basic enduring configuration
 
@@ -12,7 +13,17 @@ Included tools:
 * [bash][]
 * aliases
 
-## Usage ##
+## Usage 
+
+Consistent install is difficult across target environments.
+The following files list their include commands for their
+associated input files
+
+* dww-custom.el - emacs init.el
+* tmux_custom - tmux .tmux.conf
+* custom_bash.sh - bash .bashrc
+* zshrc_custom - zsh .zshrc
+
 
 
 [emacs]: http://www.gnu.org/software/emacs "Emacs"

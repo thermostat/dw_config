@@ -1,7 +1,7 @@
 ###############################################
 # Custom bash changes
 # To add, source at the end of your .bashrc
-# source ${DW_CONFIG}/custom_bash.sh
+# source {{ PYRENTO_HOME }}/custom_bash.sh
 ###############################################
 
 

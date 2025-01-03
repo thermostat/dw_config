@@ -4,10 +4,13 @@
 ; This should handle general (non-system specific) options, and
 ; it should be loaded from init.el or .emacs. Tested on emacs 24.
 ;
+; (load-file {{ PYRENTO_HOME }}/dww-custom.el)
+;
 ; Dan Williams
-; dan@osheim.org
-; 2013-2014
+; dww@pyrento.net
+; 2013-2025
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;                                         
 
 ;Markdown package -
 ;http://jblevins.org/projects/markdown-mode/markdown-mode.el
