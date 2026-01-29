@@ -12,21 +12,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                         
 
-;Markdown package -
-;http://jblevins.org/projects/markdown-mode/markdown-mode.el
-;(browse-url-emacs 
-; "http://jblevins.org/projects/markdown-mode/markdown-mode.el")
-
- (ignore-errors
-   (let ((md-file "~/.emacs.d/markdown-mode.el"))
-     (if (not (file-exists-p md-file))
-         (url-copy-file "https://raw.githubusercontent.com/jrblevin/markdown-mode/master/markdown-mode.el" md-file))
-  (load-file md-file)
-  ))
-
 ; Not sure if global-font-lock-mode is necessary in
 ; this day in age, but I keep it as a remind of .emacs
-; past.
+; past. 
 (global-font-lock-mode 1)
 (line-number-mode 1)
 (column-number-mode 1)
@@ -125,5 +113,33 @@
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
+(when (< emacs-major-version 27)
+  (package-initialize))
+
+(defvar dww-required-packages '(yaml-mode json-mode markdown-mode rust-mode)
+  "Packages that should always be installed when available.")
+
+(defun dww-ensure-packages (packages)
+  "Install PACKAGES from the configured archives if missing."
+  (let ((refreshed nil))
+    (dolist (pkg packages)
+      (unless (package-installed-p pkg)
+        (unless refreshed
+          (condition-case err
+              (progn
+                (package-refresh-contents)
+                (setq refreshed t))
+            (error
+             (setq refreshed 'failed)
+             (message "Package refresh failed: %s" err))))
+        (unless (eq refreshed 'failed)
+          (condition-case err
+              (package-install pkg)
+            (error
+             (message "Could not install %s: %s" pkg err))))))))
+
+(dww-ensure-packages dww-required-packages)
+(dolist (pkg dww-required-packages)
+  (require pkg nil t))
+
 ;(require 'magit)
